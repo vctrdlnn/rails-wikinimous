@@ -6,8 +6,5 @@
   <%= Kramdown::Document.new(@article.content).to_html.html_safe %>
 </p>
 
-
-
-
 <%= link_to "All articles", articles_path %> -
 <%= link_to "Edit article", edit_article_path(@article) %>
