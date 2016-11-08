@@ -21,7 +21,10 @@ a:link {
 }
 
 #editor {
-    width: 500px;
-    height: auto;
-    min-height: 500px;
+    width: 900px;
+    min-height: 300px;
+    resize: both;
+    border: thin solid lightgrey;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }

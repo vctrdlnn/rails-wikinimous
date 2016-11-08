@@ -1,17 +1,34 @@
-<%= form_for (@article), html: {class: "form-control"} do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_for (@article) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
 
-  <%= f.hidden_field :content %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.hidden_field :content %>
+    <div id="editor"></div>
 
   <%= f.submit %>
 <% end %>
 
-<p>Content:</p>
-<div id="editor"></div>
-
-
 <% content_for :js do %>
-    <%= javascript_include_tag 'articles/form' %>
-    <script></script>
+    <script>
+      function startEditor(input) {
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/tomorrow");
+        editor.getSession().setUseWrapMode(true);
+        editor.getSession().setMode("ace/mode/markdown");
+        editor.setValue(input);
+        return editor;
+      }
+      var content = $('#article_content').val();
+      current_editor = startEditor(content);
+
+      $("form").on("submit", function(event) {
+        // Code executed when a form is submitted
+        $(this).find("input[id=article_content]")[0].value = current_editor.getValue();
+      })
+    </script>
+    <% # javascript_include_tag 'articles/form' %>
 <% end %>
