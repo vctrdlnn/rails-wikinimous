@@ -2,10 +2,16 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
 
-  <%= f.label :content %>
-  <div id="editor">
-    <%= f.text_area :content %>
-  </div>
+  <%= f.hidden_field :content %>
 
   <%= f.submit %>
+<% end %>
+
+<p>Content:</p>
+<div id="editor"></div>
+
+
+<% content_for :js do %>
+    <%= javascript_include_tag 'articles/form' %>
+    <script></script>
 <% end %>

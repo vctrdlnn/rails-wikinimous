@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+a {
+  color: inherit;
+}
+a:link {
+  text-decoration: none
+}
+
+#editor {
+    width: 500px;
+    height: auto;
+    min-height: 500px;
+}

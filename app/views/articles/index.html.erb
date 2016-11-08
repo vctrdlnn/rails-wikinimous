@@ -1,16 +1,16 @@
 <h1>WIKINIMOUS</h1>
 <p>Welcome to wikiminous where you can write whatever you want.</p>
-
+<% icon_edit = "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" %>
+<% icon_trash = "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>" %>
 <ol>
   <% @articles.each do |article| %>
     <li>
-      <h2>
-        <%= link_to article.title, article_path(article) %>
-      </h2>
       <h3>
-        <%= link_to "Edit", edit_article_path(article) %>
-        -
-        <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to article.title, article_path(article) %>
+         -
+        <%= link_to icon_edit.html_safe, edit_article_path(article) %>
+         -
+        <%= link_to icon_trash.html_safe, article_path(article), method: :delete, data: { confirm: "Are you sure?" } %>
       </h3>
       <p>
         <%= "content: #{article.content}" %>
